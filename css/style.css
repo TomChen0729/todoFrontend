@@ -1,0 +1,82 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --danger-color: #ef4444;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --card-bg: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --border-radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 { text-align: center; margin-bottom: 1.5rem; color: var(--text-main); }
+
+/* 輸入表單 */
+.input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+input, textarea {
+    padding: 12px; border: 1px solid #e2e8f0; border-radius: var(--border-radius);
+    outline: none; font-size: 14px;
+}
+input:focus, textarea:focus { border-color: var(--primary-color); }
+
+button#add-btn {
+    background: var(--primary-color); color: white; border: none;
+    padding: 12px; border-radius: var(--border-radius);
+    cursor: pointer; font-weight: bold; transition: 0.2s;
+}
+button#add-btn:hover { background: var(--primary-hover); }
+
+/* 列表項目 */
+#todo-list { list-style: none; }
+.todo-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 15px; border-bottom: 1px solid #edf2f7;
+}
+.todo-item.completed .title { text-decoration: line-through; color: var(--text-muted); }
+
+.content { flex: 1; }
+.title { font-weight: 600; font-size: 16px; }
+.desc { font-size: 13px; color: var(--text-muted); }
+
+.actions { display: flex; gap: 8px; }
+.btn-edit { color: var(--primary-color); background: none; border: 1px solid #e2e8f0; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.btn-delete { color: var(--danger-color); background: none; border: 1px solid #fee2e2; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+
+/* 彈窗樣式 */
+.modal {
+    display: none; position: fixed; z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
+}
+.modal.active { display: flex; }
+.modal-content {
+    background: white; padding: 2rem; border-radius: 16px;
+    width: 90%; max-width: 400px;
+}
+.form-field { margin-bottom: 15px; }
+.form-field label { display: block; font-size: 12px; margin-bottom: 4px; color: var(--text-muted); }
+.form-field input, .form-field textarea { width: 100%; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.btn-primary { background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-secondary { background: #edf2f7; color: var(--text-main); border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }

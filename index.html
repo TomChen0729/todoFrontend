@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待辦事項系統 - 完整 CRUD 版</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Todo List</h1>
+
+        <!-- 新增區塊 -->
+        <div class="input-group">
+            <input type="text" id="todo-title" placeholder="要做什麼？ (標題)">
+            <textarea id="todo-desc" placeholder="詳細內容... (描述)" rows="2"></textarea>
+            <button id="add-btn">新增事項</button>
+        </div>
+
+        <!-- 列表顯示區 -->
+        <ul id="todo-list">
+            <li class="loading">載入中...</li>
+        </ul>
+    </div>
+
+    <!-- 編輯彈窗 (Modal) -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h3>編輯待辦事項</h3>
+            <!-- 隱藏欄位紀錄 ID -->
+            <input type="hidden" id="edit-id">
+            
+            <div class="form-field">
+                <label>標題</label>
+                <input type="text" id="edit-title">
+            </div>
+            
+            <div class="form-field">
+                <label>描述</label>
+                <textarea id="edit-desc" rows="4"></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">取消</button>
+                <button class="btn-primary" onclick="saveEdit()">儲存修改</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
