@@ -33,7 +33,7 @@ async function createTodo() {
             body: JSON.stringify({
                 title: title,
                 description: desc,
-                is_completed: false
+                isCompleted: false
             })
         });
         const result = await res.json();
@@ -54,7 +54,7 @@ async function toggleStatus(id, currentStatus) {
     await fetch(`${API_URL}/updateTodo`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, is_completed: !currentStatus })
+        body: JSON.stringify({ id, isCompleted: !currentStatus })
     });
     fetchTodos();
 }
@@ -125,15 +125,15 @@ function renderTodos(todos) {
 
     todos.forEach(todo => {
         const li = document.createElement('li');
-        li.className = `todo-item ${todo.is_completed ? 'completed' : ''}`;
+        li.className = `todo-item ${todo.isCompleted ? 'completed' : ''}`;
         
         // 轉義特殊字元，避免 JavaScript 注入錯誤
         const safeTitle = todo.title.replace(/'/g, "\\'");
         const safeDesc = (todo.description || "").replace(/'/g, "\\'");
 
         li.innerHTML = `
-            <input type="checkbox" ${todo.is_completed ? 'checked' : ''} 
-                onchange="toggleStatus(${todo.id}, ${todo.is_completed})">
+            <input type="checkbox" ${todo.isCompleted ? 'checked' : ''} 
+                onchange="toggleStatus(${todo.id}, ${todo.isCompleted})">
             
             <div class="content">
                 <div class="title">${todo.title}</div>
